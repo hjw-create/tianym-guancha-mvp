@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="凌源个体养殖户早期观察轻科普：人话清单+何时找兽医。非诊疗、不开方不开药。" />
+<title>先观察，再决定要不要找兽医</title>
+<style>
+:root{
+  --ink:#1a2e22; --muted:#5a6e62; --line:#c9d9cf; --bg:#eef5f0; --card:#fff;
+  --acc:#1f7a4d; --acc2:#0f6b8a; --warn:#9a5b12; --danger:#b42318; --soft:#e3f3ea;
+  --font:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font);color:var(--ink);background:linear-gradient(180deg,#e8f4ec,#f4f7f2 45%,#eef5f0)}
+a{color:var(--acc)}
+button,input,select,textarea{font:inherit}
+.app{max-width:720px;margin:0 auto;padding:0 16px 56px}
+.hero{margin:0 -16px 14px;padding:22px 16px 18px;background:linear-gradient(135deg,#145a36,#1f7a4d 55%,#2f9a62);color:#f3faf5}
+.hero .badge{display:inline-block;font-size:.72rem;font-weight:700;background:#f0c36a;color:#3a2a0a;border-radius:6px;padding:3px 8px;margin-bottom:10px}
+.hero h1{margin:0 0 8px;font-size:1.45rem;line-height:1.35;color:#fff}
+.hero p{margin:0;font-size:.9rem;line-height:1.5;color:#d7eadc}
+.hero .cta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.hero .cta a{text-decoration:none;font-weight:600;font-size:.9rem;background:#fff;color:#145a36;border-radius:8px;padding:10px 14px}
+.hero .cta a.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+.bound{background:#fff8ef;border:1px solid #e6d2b5;border-radius:10px;padding:12px 14px;margin:0 0 14px;font-size:.9rem;line-height:1.55}
+.bound strong{color:var(--warn)}
+.bound ul{margin:8px 0 0;padding-left:18px}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.jump a{font-size:.82rem;text-decoration:none;color:var(--acc);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
+.stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 14px}
+.stat3 .s{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.stat3 b{display:block;font-size:1.2rem;color:var(--acc)}
+.stat3 span{font-size:.72rem;color:var(--muted)}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 14px}
+section h2{font-size:1.05rem;margin:0 0 10px}
+section h3{font-size:.95rem;margin:12px 0 8px;color:#2a4a34}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:.85rem;color:var(--muted);cursor:pointer}
+.chips button.on{background:var(--soft);border-color:var(--acc);color:var(--acc);font-weight:700}
+label.item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed #dde8e1;font-size:.94rem;line-height:1.45}
+label.item:last-child{border-bottom:0}
+label.item .tip{display:block;font-size:.78rem;color:var(--muted);margin-top:2px}
+input[type=checkbox]{margin-top:3px;width:18px;height:18px;flex-shrink:0}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+input[type=text],input[type=tel],input[type=date],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff}
+button.btn{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:11px 16px;cursor:pointer;font-weight:600}
+button.sec{background:#4a7460;color:#fff;border:0;border-radius:8px;padding:11px 16px;cursor:pointer;font-weight:600}
+button.ghost{background:transparent;color:var(--acc);border:1px solid var(--line);border-radius:8px;padding:11px 16px;cursor:pointer}
+.hint{font-size:.84rem;color:var(--muted);margin-top:8px;line-height:1.45}
+.ok{color:#1f6b3a;font-size:.9rem;margin-top:8px}
+.err{color:var(--danger);font-size:.9rem;margin-top:8px}
+.bar{height:10px;background:#e2ebe4;border-radius:999px;overflow:hidden;margin-bottom:10px}
+.bar>i{display:block;height:100%;width:0;background:var(--acc);transition:width .2s}
+.progress-meta{display:flex;justify-content:space-between;font-size:.84rem;color:var(--muted);margin-bottom:6px}
+.redflag{border-left:3px solid var(--danger);background:#fff5f4;padding:10px 12px;margin:0 0 8px;border-radius:0 8px 8px 0;font-size:.9rem;line-height:1.5}
+.myth{border-left:3px solid var(--acc);padding:8px 0 8px 12px;margin:0 0 10px;font-size:.9rem;line-height:1.5}
+.myth strong{display:block;margin-bottom:2px}
+.script{background:#f4faf6;border:1px dashed var(--line);border-radius:10px;padding:12px;font-size:.9rem;line-height:1.55;margin:0 0 8px}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px}
+.week button{padding:8px 0;border-radius:8px;border:1px solid var(--line);background:#f7faf7;font-size:.78rem;cursor:pointer}
+.week button.done{background:#d7eadc;border-color:#9fc3a8}
+.week button.today{outline:2px solid var(--acc);outline-offset:1px}
+.faq details{border-top:1px dashed #e2ebe4;padding:10px 0}
+.faq details:first-of-type{border-top:0}
+.faq summary{cursor:pointer;font-weight:600}
+.faq p{margin:8px 0 0;font-size:.9rem;line-height:1.55;color:#334a39}
+ul.list,ol.steps{margin:8px 0 0;padding-left:18px;line-height:1.55}
+footer{margin-top:18px;font-size:.8rem;color:var(--muted);line-height:1.5}
+.species-panel{display:none}.species-panel.on{display:block}
+@media(max-width:420px){.week button{font-size:.7rem;padding:7px 0}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="hero">
+    <div class="badge">路径B · 凌源养殖户轻科普</div>
+    <h1>先观察，再决定要不要找兽医</h1>
+    <p>给家乡凌源个体养殖户（家庭猪场 / 蛋鸡）用的一页早期观察清单：用人话勾清今天该看什么、什么情况必须找执业兽医。不开方、不开药、不卖兽药。</p>
+    <div class="cta">
+      <a href="#check">去做今日观察</a>
+      <a class="ghost" href="#redline">看何时找兽医</a>
+    </div>
+  </header>
+
+  <div class="stat3" aria-label="本机统计">
+    <div class="s"><b id="stChecks">0</b><span>已存观察</span></div>
+    <div class="s"><b id="stDays">0</b><span>点亮天数</span></div>
+    <div class="s"><b id="stBooks">0</b><span>预约试填</span></div>
+  </div>
+
+  <div class="bound">
+    <strong>边界（必读）：</strong>
+    <ul>
+      <li>本页只做饲养早期观察科普与「何时找兽医」提醒。</li>
+      <li>不在此诊断、不开方、不开药、不推荐具体药名与剂量。</li>
+      <li>出现红线情况请尽快联系执业兽医或正规动物诊疗机构，不要凭短视频对症买药。</li>
+    </ul>
+  </div>
+
+  <nav class="jump" aria-label="跳转">
+    <a href="#why">为什么</a>
+    <a href="#check">今日观察</a>
+    <a href="#redline">红线送医</a>
+    <a href="#myths">用药误区</a>
+    <a href="#script">短视频脚本</a>
+    <a href="#week">七日进度</a>
+    <a href="#book">预约试填</a>
+    <a href="#faq">常见问</a>
+    <a href="#local">本机记录</a>
+  </nav>
+
+  <section id="why">
+    <h2>为什么先做这一页</h2>
+    <ul class="list">
+      <li>常见异常时容易先搜药、盲目用药，反而耽误。</li>
+      <li>不知道「什么情况必须找兽医」，怕大题小做或小题拖大。</li>
+      <li>专业词太长，需要一页能勾选的人话清单，而不是诊疗或卖药页。</li>
+    </ul>
+    <div class="chips" aria-hidden="true">
+      <span style="font-size:.8rem;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px">凌源个体户</span>
+      <span style="font-size:.8rem;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px">家庭猪场</span>
+      <span style="font-size:.8rem;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px">蛋鸡</span>
+      <span style="font-size:.8rem;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px">非诊疗</span>
+    </div>
+  </section>
+
+  <section id="check">
+    <h2>今日早期观察（勾完才能保存）</h2>
+    <p class="hint">先选畜种。下列是观察动作，不是病名诊断。</p>
+    <div class="chips" id="speciesChips">
+      <button type="button" class="on" data-sp="pig">家庭猪场</button>
+      <button type="button" data-sp="hen">蛋鸡</button>
+    </div>
+    <div class="progress-meta"><span>今日进度</span><span id="progText">0 / 5</span></div>
+    <div class="bar" aria-hidden="true"><i id="progBar"></i></div>
+    <div class="row"><input type="date" id="obsDate" aria-label="观察日期" /></div>
+
+    <div class="species-panel on" id="panel-pig">
+      <label class="item"><input type="checkbox" data-k="p1" /><span>精神：猪群是否多数能起身、对人有反应<span class="tip">只记「多数正常 / 明显蔫」，不写病名。</span></span></label>
+      <label class="item"><input type="checkbox" data-k="p2" /><span>采食饮水：今日料槽、水嘴是否基本正常<span class="tip">突然大面积不吃要对照红线。</span></span></label>
+      <label class="item"><input type="checkbox" data-k="p3" /><span>粪便尿液：有无突然稀便、血便、停便等明显异常<span class="tip">异常只打勾提醒，不对症开药。</span></span></label>
+      <label class="item"><input type="checkbox" data-k="p4" /><span>呼吸体表：有无成群咳嗽气喘、皮肤大片发红发紫<span class="tip">成群出现优先联系兽医。</span></span></label>
+      <label class="item"><input type="checkbox" data-k="p5" /><span>边界自检：本页只做观察，不在此开药开方<span class="tip">需要用药请执业兽医。 </span></span></label>
+    </div>
+    <div class="species-panel" id="panel-hen">
+      <label class="item"><input type="checkbox" data-k="h1" /><span>精神：鸡群是否多数活泼、不扎堆蔫<span class="tip">只记观察，不写病名。</span></span></label>
+      <label class="item"><input type="checkbox" data-k="h2" /><span>采食饮水：料槽、水线今日是否基本正常<span class="tip">突然大面积不喝要对照红线。</span></span></label>
+      <label class="item"><input type="checkbox" data-k="h3" /><span>产蛋粪便：产蛋有无骤降；粪便有无血便、白痢样异常<span class="tip">异常提醒送医评估，不在此开药。</span></span></label>
+      <label class="item"><input type="checkbox" data-k="h4" /><span>呼吸冠髯：有无成群甩鼻、张口呼吸、冠髯发紫<span class="tip">成群出现优先联系兽医。</span></span></label>
+      <label class="item"><input type="checkbox" data-k="h5" /><span>边界自检：本页只做观察，不在此开药开方<span class="tip">需要用药请执业兽医。</span></span></label>
+    </div>
+
+    <div class="row">
+      <input type="text" id="farmName" placeholder="养殖称呼（如：老张家猪 / 二姨蛋鸡）" />
+      <select id="scale">
+        <option value="">规模大概</option>
+        <option>50头/只以下</option>
+        <option>50–200</option>
+        <option>200以上</option>
+      </select>
+    </div>
+    <textarea id="note" rows="2" placeholder="一句今日观察（精神/采食，非诊断、不写药名）"></textarea>
+    <div class="row">
+      <button type="button" class="btn" id="saveCheck">保存今日观察</button>
+      <button type="button" class="sec" id="gotoBook">去预约试填</button>
+      <button type="button" class="ghost" id="resetChecks">清空勾选</button>
+    </div>
+    <div id="checkMsg" class="hint"></div>
+  </section>
+
+  <section id="redline">
+    <h2>红线：出现这些，优先找执业兽医</h2>
+    <p class="hint">下列是「该不该尽快找兽医」的提醒，不是诊断，更不是用药方案。</p>
+    <div class="redflag"><strong>突然大面积不吃不喝或大量死亡</strong> — 先隔离观察并联系兽医，不要先在短视频里对症买药。</div>
+    <div class="redflag"><strong>血便、血尿、口鼻异常分泌物成群出现</strong> — 记录时间与头数，尽快送医/请兽医到场。</div>
+    <div class="redflag"><strong>高热、严重呼吸困难、母猪/蛋鸡繁殖性能骤变</strong> — 属于需要专业判断的情况，本页不给方案。</div>
+    <div class="redflag"><strong>你已经连续用药仍无好转</strong> — 停掉「自行加药试」，改为找执业兽医复盘（本页不指导如何停药）。</div>
+  </section>
+
+  <section id="myths">
+    <h2>常见「盲目用药」误区</h2>
+    <div class="myth"><strong>误区：邻居用什么药我就用什么</strong>畜种、日龄、现场情况不同；错药可能掩盖症状。先观察+问兽医。</div>
+    <div class="myth"><strong>误区：先打一针广谱的，好了算赚到</strong>本页不推荐任何针剂或药名。无效又延误，损失往往更大。</div>
+    <div class="myth"><strong>误区：短视频评论区药方能当处方</strong>评论区不是执业兽医面诊。把评论当线索，把决策交给持证兽医。</div>
+    <div class="myth"><strong>误区：清单太专业就不用看</strong>本清单故意用人话；超过一页的长文可以不看，先勾完五项。</div>
+  </section>
+
+  <section id="script">
+    <h2>今日可拍的短视频脚本（约45秒）</h2>
+    <div class="script" id="scriptBox">
+      <strong>开头3秒：</strong>「养猪/养鸡别急着搜药，先勾这五项。」<br/>
+      <strong>中间：</strong>对着清单念精神、采食、粪便、呼吸、边界自检；强调「不对症开药」。<br/>
+      <strong>结尾：</strong>「成群异常或血便，先找执业兽医。链接在主页，免费试填。」
+    </div>
+    <div class="row">
+      <button type="button" class="sec" id="copyScript">复制脚本</button>
+      <button type="button" class="ghost" id="shuffleScript">换一句开头</button>
+    </div>
+    <div id="scriptMsg" class="hint"></div>
+  </section>
+
+  <section id="week">
+    <h2>七日进度（本机）</h2>
+    <p class="hint">点亮表示该日已有观察保存。不是云端打卡。</p>
+    <div class="week" id="weekGrid"></div>
+  </section>
+
+  <section id="book">
+    <h2>预约两周试填</h2>
+    <p class="hint">对象：凌源个体养殖户主责人或家属。同学群点赞不算试填。</p>
+    <input type="text" id="who" placeholder="你的称呼" />
+    <div class="row" style="margin-top:8px"><input type="tel" id="phone" maxlength="11" placeholder="11位手机号" /></div>
+    <select id="how" style="margin-top:8px">
+      <option value="">主要场景</option>
+      <option>家庭猪场</option>
+      <option>蛋鸡</option>
+      <option>家里一起养的人</option>
+    </select>
+    <textarea id="oneThing" rows="2" style="margin-top:8px" placeholder="最想先搞清的一件事（如：什么情况必须找兽医）"></textarea>
+    <div class="row"><button type="button" class="btn" id="saveBook">留下预约</button></div>
+    <div id="bookMsg" class="hint"></div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2>常见问</h2>
+    <details open>
+      <summary>你会在这里给我开药吗？</summary>
+      <p>不会。本页明确不开方、不开药、不卖兽药。需要用药请找执业兽医。</p>
+    </details>
+    <details>
+      <summary>记录会上传吗？</summary>
+      <p>不会。观察与预约只存在本机浏览器，清站点数据会消失。</p>
+    </details>
+    <details>
+      <summary>为什么要强制勾五项？</summary>
+      <p>避免「看一眼就算观察过」。五项是最低观察动作，不构成诊断。</p>
+    </details>
+    <details>
+      <summary>猪和鸡清单为什么分开？</summary>
+      <p>观察侧重点不同；红线送医原则一致：成群异常、血便、严重呼吸问题优先找兽医。</p>
+    </details>
+  </section>
+
+  <section id="local">
+    <h2>本机记录</h2>
+    <div class="row">
+      <button type="button" class="sec" id="copySummary">复制摘要</button>
+      <button type="button" class="ghost" id="clearAll">清空本机记录</button>
+    </div>
+    <div id="localMsg" class="hint"></div>
+    <div id="localList" class="hint">还没有记录。先完成今日观察并保存。</div>
+  </section>
+
+  <footer>
+    学号 2024121079 · 田雨萌 · 动物科学与医学学院 · 24级动物医学1班<br/>
+    公网地址：<a href="https://hjw-create.github.io/tianym-guancha-mvp/">https://hjw-create.github.io/tianym-guancha-mvp/</a><br/>
+    联系电话：17504219270 · 课程作业 MVP（路径B）· 仅早期观察科普，非诊疗服务。
+  </footer>
+</div>
+<script>
+const KEY = "tianym_guancha_mvp_v1";
+const LINK = "https://hjw-create.github.io/tianym-guancha-mvp/";
+const OPENINGS = [
+  "养猪/养鸡别急着搜药，先勾这五项。",
+  "邻居用过的药，先别照着打。",
+  "血便、成群不吃，优先找兽医。",
+  "一页人话清单，比十条带货视频管用。"
+];
+
+function empty(){ return { checks:[], books:[] }; }
+function todayStr(){
+  const d=new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+function load(){
+  try{
+    const data=JSON.parse(localStorage.getItem(KEY)||'{"checks":[],"books":[]}');
+    data.checks=data.checks||[]; data.books=data.books||[];
+    return data;
+  }catch{ return empty(); }
+}
+function save(data){ localStorage.setItem(KEY, JSON.stringify(data)); }
+
+let species = "pig";
+function activeBoxes(){
+  const root = document.getElementById(species==="pig"?"panel-pig":"panel-hen");
+  return [...root.querySelectorAll('input[type=checkbox]')];
+}
+function updateProgress(){
+  const n=activeBoxes().filter(b=>b.checked).length;
+  document.getElementById("progText").textContent=`${n} / 5`;
+  document.getElementById("progBar").style.width=`${(n/5)*100}%`;
+}
+function updateStats(data){
+  const days=new Set(data.checks.map(c=>c.date).filter(Boolean));
+  document.getElementById("stChecks").textContent=String(data.checks.length);
+  document.getElementById("stDays").textContent=String(days.size);
+  document.getElementById("stBooks").textContent=String(data.books.length);
+}
+function renderWeek(){
+  const data=load();
+  const done=new Set(data.checks.map(c=>c.date).filter(Boolean));
+  const labels=["日","一","二","三","四","五","六"];
+  const today=todayStr();
+  let html="";
+  for(let i=6;i>=0;i--){
+    const d=new Date(); d.setDate(d.getDate()-i);
+    const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+    const cls=["", done.has(key)?"done":"", key===today?"today":""].filter(Boolean).join(" ");
+    html+=`<button type="button" class="${cls}" data-date="${key}">${labels[d.getDay()]}<br>${d.getDate()}</button>`;
+  }
+  const grid=document.getElementById("weekGrid");
+  grid.innerHTML=html;
+  grid.querySelectorAll("button").forEach(btn=>{
+    btn.onclick=()=>{ document.getElementById("obsDate").value=btn.dataset.date; document.getElementById("check").scrollIntoView({behavior:"smooth"}); };
+  });
+}
+function render(){
+  const data=load();
+  updateStats(data);
+  const el=document.getElementById("localList");
+  if(!data.checks.length && !data.books.length){
+    el.textContent="还没有记录。先完成今日观察并保存。";
+    renderWeek(); return;
+  }
+  let html="";
+  if(data.checks.length){
+    html+="<strong>观察</strong><ul class='list'>";
+    data.checks.slice(-12).reverse().forEach(c=>{
+      html+=`<li>${c.date||""} ${c.time||""} · ${c.species||""} ${c.farm||""} · ${c.note||"无备注"}</li>`;
+    });
+    html+="</ul>";
+  }
+  if(data.books.length){
+    html+="<strong>预约</strong><ul class='list'>";
+    data.books.slice(-5).reverse().forEach(b=>{
+      html+=`<li>${b.time} · ${b.who} · ${b.phone.slice(0,3)}****${b.phone.slice(-4)} · ${b.how}</li>`;
+    });
+    html+="</ul>";
+  }
+  el.innerHTML=html;
+  renderWeek();
+}
+
+document.getElementById("obsDate").value=todayStr();
+document.getElementById("speciesChips").onclick=e=>{
+  const btn=e.target.closest("button[data-sp]"); if(!btn) return;
+  species=btn.dataset.sp;
+  [...document.getElementById("speciesChips").children].forEach(b=>b.classList.toggle("on", b===btn));
+  document.getElementById("panel-pig").classList.toggle("on", species==="pig");
+  document.getElementById("panel-hen").classList.toggle("on", species==="hen");
+  updateProgress();
+};
+["panel-pig","panel-hen"].forEach(id=>{
+  document.getElementById(id).addEventListener("change", updateProgress);
+});
+updateProgress();
+
+document.getElementById("resetChecks").onclick=()=>{
+  activeBoxes().forEach(b=>b.checked=false);
+  updateProgress();
+  document.getElementById("checkMsg").textContent="";
+};
+document.getElementById("saveCheck").onclick=()=>{
+  const msg=document.getElementById("checkMsg");
+  if(!activeBoxes().every(b=>b.checked)){ msg.className="err"; msg.textContent="五项都勾完才能保存。"; return; }
+  const farm=document.getElementById("farmName").value.trim();
+  const scale=document.getElementById("scale").value;
+  if(!scale){ msg.className="err"; msg.textContent="请选择规模大概。"; return; }
+  const data=load();
+  data.checks.push({
+    date: document.getElementById("obsDate").value||todayStr(),
+    time: new Date().toLocaleString("zh-CN",{hour12:false}),
+    species: species==="pig"?"家庭猪场":"蛋鸡",
+    farm, scale,
+    note: document.getElementById("note").value.trim()
+  });
+  save(data);
+  msg.className="ok"; msg.textContent="已保存到本机。七日进度已更新。";
+  render();
+};
+document.getElementById("saveBook").onclick=()=>{
+  const who=document.getElementById("who").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  const how=document.getElementById("how").value;
+  const oneThing=document.getElementById("oneThing").value.trim();
+  const msg=document.getElementById("bookMsg");
+  if(!who||!how){ msg.className="err"; msg.textContent="请填写称呼和场景。"; return; }
+  if(!/^1\d{10}$/.test(phone)){ msg.className="err"; msg.textContent="手机号须为11位。"; return; }
+  const data=load();
+  data.books.push({ time:new Date().toLocaleString("zh-CN",{hour12:false}), who, phone, how, oneThing });
+  save(data);
+  msg.className="ok"; msg.textContent="预约已记在本机，将按称呼联系试填。";
+  render();
+};
+document.getElementById("gotoBook").onclick=()=>document.getElementById("book").scrollIntoView({behavior:"smooth"});
+
+function currentScript(){
+  const open=document.getElementById("scriptBox").dataset.open || OPENINGS[0];
+  return `开头3秒：「${open}」\n中间：对着清单念精神、采食、粪便、呼吸、边界自检；强调不对症开药。\n结尾：「成群异常或血便，先找执业兽医。链接在主页，免费试填。」\n链接：${LINK}`;
+}
+document.getElementById("scriptBox").dataset.open=OPENINGS[0];
+document.getElementById("copyScript").onclick=async()=>{
+  const msg=document.getElementById("scriptMsg");
+  try{ await navigator.clipboard.writeText(currentScript()); msg.className="ok"; msg.textContent="脚本已复制。"; }
+  catch{ msg.className="err"; msg.textContent="复制失败，请手动选择。"; }
+};
+document.getElementById("shuffleScript").onclick=()=>{
+  const next=OPENINGS[Math.floor(Math.random()*OPENINGS.length)];
+  document.getElementById("scriptBox").dataset.open=next;
+  document.getElementById("scriptBox").innerHTML=`<strong>开头3秒：</strong>「${next}」<br/><strong>中间：</strong>对着清单念精神、采食、粪便、呼吸、边界自检；强调「不对症开药」。<br/><strong>结尾：</strong>「成群异常或血便，先找执业兽医。链接在主页，免费试填。」`;
+  document.getElementById("scriptMsg").className="hint";
+  document.getElementById("scriptMsg").textContent="已换开头，可再点复制。";
+};
+
+document.getElementById("copySummary").onclick=async()=>{
+  const data=load();
+  const lines=["凌源早期观察摘要（本机）"];
+  data.checks.slice(-12).forEach(c=>lines.push(`观察 ${c.date} ${c.time} | ${c.species} ${c.farm||""} | ${c.note||""}`));
+  data.books.slice(-5).forEach(b=>lines.push(`预约 ${b.time} | ${b.who} | ${b.how}`));
+  const msg=document.getElementById("localMsg");
+  try{ await navigator.clipboard.writeText(lines.join("\n")); msg.className="ok"; msg.textContent="摘要已复制。"; }
+  catch{ msg.className="err"; msg.textContent="复制失败。"; }
+};
+document.getElementById("clearAll").onclick=()=>{
+  if(!confirm("确定清空本机全部观察与预约？")) return;
+  save(empty());
+  document.getElementById("localMsg").className="ok";
+  document.getElementById("localMsg").textContent="已清空。";
+  render();
+};
+render();
+</script>
+</body>
+</html>
